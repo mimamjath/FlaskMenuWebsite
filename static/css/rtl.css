@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 .p{
+    font-family: "Cairo", sans-serif;
+}
+.rtl .ff-secondary {
+    font-family: "Cairo", sans-serif;
+}
+
+body.rtl{
+    direction: rtl;
+    text-align: right;
+    font-family: "Cairo", sans-serif;
+}
+.rtl .text-lg-start{
+    text-align: right !important;
+}
+.rtl .pe-4{
+    padding-left: 1.5rem !important;
+}
+.rtl .ms-auto {
+    margin-right: auto !important;
+}
+.rtl .ms-0{
+    margin-right: 0 !important;
+}
+.navbar-nav {
+    padding-right: 0;
+}
+.rtl .navbar-dark .navbar-nav .nav-link {
+    margin-right: 25px;
+}
+.rtl .mx-3 {
+    margin-left: 1rem !important;
+}
+.rtl .nav{
+    padding-right: 0;
+}
+.rtl .ps-3{
+    padding-right: 1rem !important;
+}
+.rtl .section-title::before{
+    right: 55px;
+}
+.rtl .text-start {
+    text-align: right !important;
+}
+.rtl .footer .btn.btn-link{
+    text-align: right;
+}
+.rtl .footer .btn.btn-link::before{
+    margin-left: 10px;
+}
+/* .rtl .section-title::before{
+    right: -55px; */
+
+/* .rtl .section-title::after{
+    left: -55px;
+} */
+
+/*** Section Title ***/
+.rtl .section-title2 {
+    position: relative;
+    display: inline-block;
+}
+
+.rtl .section-title2::before {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 2px;
+    top: 50%;
+    right: -55px;
+    margin-top: -1px;
+    background: var(--primary);
+}
+
+.rtl .section-title2::after {
+    position: absolute;
+    content: "";
+    width: 45px;
+    height: 2px;
+    top: 50%;
+    left: -55px;
+    margin-top: -1px;
+    background: var(--primary);
+}
+
+.rtl .section-title2.text-start::before,
+.rtl .section-title2.text-end::after {
+    display: none;
+}
+
+.rtl .ps-4{
+    padding-right: 1.5rem !important;
+}
+.slider{
+    
+    
+    width: 90%;
+}
+.rtl .chatbtn{
+    width: 125px;
+    height: fit-content;
+    display: flex;
+    float: left;
+    bottom: 25px;
+    left: 40px;
+    text-align: left;
+    
+}
+.rtl .chat{
+    
+    padding: 3px 7px;
+    
+}
+.rtl .chtimg{
+    width: 30px;
+    height: 25px;
+    padding: 3px 5px
+}
+.rtl .me-2 {
+    margin-left: .5rem !important;
+}
+.rtl .me-3 {
+    margin-left: 1rem !important;
+}
+.rtl .text-end {
+    text-align: left !important;
+}
+.rtl .navbar-dark .navbar-nav .nav-link {
+    margin-right: 25px;
+}

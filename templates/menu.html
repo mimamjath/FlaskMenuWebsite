@@ -1,0 +1,555 @@
+<!-- menu.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customstyles.css') }}">
+    <!-- Favicon -->
+    <link href="img/logosmall.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+        <link href="{{ url_for('static', filename='css/lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/rtl.css') }}" rel="stylesheet">
+
+    <script>
+        function filterMenu(category) {
+            let items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark  px-4 px-lg-5 py-3 py-lg-0" style="background-color: #121517;">
+                <a href="index.html" class="navbar-brand p-0">
+                    <!-- <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1> -->
+                    <img src="{{ url_for('static', filename='img/logo.png')}}" alt="Logo"> 
+                    
+                </a>
+                <div class="navbar-nav ms-auto py-0 pe-4 lang">
+                <!-- <a href="index.html" class="nav-item nav-link"><span class="material-icons">
+                    translate
+                    </span></a> -->
+                    <a href="index-ar.html" class="nav-item nav-link"><img src="{{ url_for('static', filename='img/ar.png')}}" /></a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <!-- <a href="index-ar.html" class="nav-item nav-link"><span class="material-icons">
+                            translate
+                            </span></a> -->
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link ">About</a>
+                        <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
+                        <a href="#mn" target="_blank" class="nav-item nav-link">Menu</a>
+                        <!-- <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="booking.html" class="dropdown-item">Booking</a>
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div> -->
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                       
+                    </div>
+                   
+                    <a href="#mn" target="_blank" class="btn btn-primary py-2 px-4" i class="fa-solid fa-phone"></i>  Order Now</a>
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5  hero-header mb-5" style="background-color: #121517;">
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-white animated slideInLeft">Gluten? Diary?<br>Refined Sugar?</h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Savor gluten-free, Allergy Friendly, Healthy delights at Aman Restaurant !</p>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Enjoy our gluten-free, dairy-free, Allergy Friendly and refined sugar-free dishes, crafted with fresh, wholesome ingredients for a deliciously satisfying experience.</p>
+                            
+                            <!-- <p class="text-white animated slideInLeft mb-4 pb-2">صنع في منشأة خاصة خالية من الغلوتين، الحليب ومشتقاته، البيض، الصويا، السمسم، والمكسرات</p> -->
+                            <a href="#mn" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Order Now</a>
+                        </div>
+                        <!-- <div class="col-lg-6 text-center text-lg-end overflow-hidden slide animated slideInRight">
+                            <img class="img-fluid slider" src="img/doc1.png" alt="">
+                        </div> -->
+                        <!-- <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="img/hero7.heic" alt=""> 
+                        </div>-->
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="{{ url_for('static', filename='img/slide2.jpg')}}" alt="">
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="{{ url_for('static', filename='img/slide3.jpg')}}" alt="">
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="{{ url_for('static', filename='img/white.jpg')}}" alt="">
+                        </div> 
+                        <!-- <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="img/hero7.heic" alt="">
+                        </div> -->
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="{{ url_for('static', filename='img/rafello.jpg')}}" alt="">
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="img/fris.webp" alt="">
+                        </div> 
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="img/slide_7.webp" alt="">
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+       <!-- Service Start -->
+       <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <a href="https://www.orderfast.com/en/amanrestkw?utm_source=qr_code_restaurant" target="_blank"> 
+                    <div class="col-lg-3 col-sm-6 wow fadeInUp " data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <!-- <i class="fa fa-3x fa-user-tie text-primary mb-4"></i> -->
+                            <img src="{{ url_for('static', filename='img/orderfast.jpg')}}" class="plat"/>
+                            <h5>Orderfast</h5>
+                            <p class="fst-normal">Find our gluten-free, dairy-free, Allergy Friendly and refined sugar-free dishes on ZYDA</p>
+                        </div>
+                    </div> 
+                
+                </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <a href="https://getcari.app/2kwJ" target="_blank">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <!-- <i class="fa fa-3x fa-utensils text-primary mb-4"></i> -->
+                            <img src="{{ url_for('static', filename='img/cari.png')}}" alt="" class="plat">
+                            <h5>Order on Cari</h5>
+                            <p class="fst-normal">Find our gluten-free, dairy-free, Allergy Friendly and refined sugar-free dishes on Cari</p>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="https://jahez.link/x7BQA8FjKJb" target="_blank">
+                    <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <!-- <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i> -->
+                            <img src="{{ url_for('static', filename='img/jahez.png')}}" class="plat" alt="">
+                            <h5>Order on Jahez</h5>
+                            <p class="fst-normal">Find our gluten-free, dairy-free, Allergy Friendly and refined sugar-free dishes on Jahez</p>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <a href="https://api.whatsapp.com/send?phone=96541010085" target="_blank">
+                        <div class="service-item rounded pt-3">
+                        <div class="p-4">
+                            <!-- <i class="fa fa-3x fa-headset text-primary mb-4"></i> -->
+                            <img src="{{ url_for('static', filename='img/whatsapp2.png')}}" class="plat" alt="">
+                            <h5>Order by WhatsApp</h5>
+                            <p>Order our gluten-free, dairy-free, Allergy Friendly and refined sugar-free dishes Thru Whatsapp</p>
+                        </div>
+                    </div></a>
+                </div> 
+            
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn abtimg" data-wow-delay="0.1s" src="{{ url_for('static', filename='img/slide2.jpg')}}">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn abtimg" data-wow-delay="0.3s" src="{{ url_for('static', filename='img/abt.webp')}}" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn abtimg" data-wow-delay="0.5s" src="{{ url_for('static', filename='img/slide1-ar.jpg')}}">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-100 wow zoomIn abtimg" data-wow-delay="0.7s" src="{{ url_for('static', filename='img/white.jpg')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
+                        <h1 class="mb-4">Welcome to Aman Restaurant</h1>
+                        <p class="mb-4">At Aman Restaurant, we believe in nourishing both body and soul. Our culinary philosophy centers around fresh, wholesome ingredients sourced from local farmers and producers. From vibrant salads bursting with seasonal produce to hearty grain bowls packed with protein and fiber, each dish is crafted with care to support your well-being.</p>
+                        <!-- <p class="mb-4">صنع في منشأة خاصة خالية من الغلوتين، الحليب ومشتقاته، البيض، الصويا، السمسم، والمكسرات</p> -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15</h1>
+                                    <div class="ps-4">
+                                        <p class="mb-0">Years of</p>
+                                        <h6 class="text-uppercase mb-0">Experience</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center border-start border-5 border-primary px-3">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
+                                    <div class="ps-4">
+                                        <p class="mb-0">Popular</p>
+                                        <h6 class="text-uppercase mb-0">Dishes</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="about.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+    <div class="container mt-5">
+        <h1 class="text-center">Our Menu</h1>
+        <div class="mb-3 text-center ">
+            <button class="btn btn-primary active" onclick="filterMenu('all')">All</button>
+            {% for key, category in categories.items() %}
+            <button class="btn btn-primary" onclick="filterMenu('{{ category.name }}')">{{ category.name }}</button>
+            {% endfor %}
+        </div>
+         <!-- Horizontal scroll container -->
+         <!-- <div class="scroll-container">
+            {% for key, item in menu_items.items() %}
+            <div class="menu-item card p-2" data-category="{{ item.category }}">
+                <img src="{{ item.image }}" class="card-img-top img-fluid" alt="Menu Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name_en }} / {{ item.name_ar }}</h5>
+                    <p class="card-text">{{ item.description }} / {{ item.description_ar }}</p>
+                    <p class="card-text">Category: {{ item.category }}</p>
+                    <p class="card-text">
+                        Price: KD {{ item.price }}
+                        <button class="btn btn-success btn-sm ms-2" onclick="addToCart('{{item.name_en}}', {{ item.price }})">
+                            Add to 🛒
+                        </button>
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div> -->
+
+        <div class="row g-4">
+            {% for key, item in menu_items.items() %}
+            <div class="col-lg-6 menu-item" data-category="{{ item.category }}">
+                <div class="d-flex align-items-center" >
+                    <img class="flex-shrink-0 img-fluid rounded menuimg abtimg" src="{{ item.image }}" alt="">
+                    <div class="w-100 d-flex flex-column text-start ps-4">
+                        <h5 class="d-flex justify-content-between border-bottom pb-2"  >
+                             <span>{{ item.name_en }} / {{ item.name_ar }}</span>
+                             <button class="button button1" onclick="addToCart('{{item.name_en}}', {{ item.price }})"><span>{{ item.price }} KD</span></button>
+                            </h5>
+                            <!-- <p class="card-text">Category: {{ item.category }}</p> -->
+                        <small class="fst-italic"> {{ item.description }} / {{ item.description_ar }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+         </div>
+
+    </div>
+ <!-- <h6>Cart</h6> -->
+ <div class="container col-lg-4 cart-box text-center" id="cart">
+    <h6 style="background-color: rgb(158, 87, 87); text-align: center;" onclick="toggleCart()" >Shopping Cart </h6>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: KD </strong><span id="total">0</span></p>
+    <button onclick="sendWhatsApp()">Send Order via WhatsApp</button>
+</div> 
+<!-- </div>  -->
+
+
+<!-- Cart Icon --><!-- You can use any icon you prefer here -->
+<div class="cart-icon"  onclick="toggleCart()">
+🛒 <span class="cart-count" id="cart-count">0</span>
+</div>
+
+ <!-- Footer Start -->
+ <div class="container-fluid text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" style="background-color: #121517;">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6 col-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
+                <a class="btn btn-link" href="about.html">About Us</a>
+                <a class="btn btn-link" href="contact.html">Contact Us</a>
+                <a class="btn btn-link" href="">Reservation</a>
+                <a class="btn btn-link" href="">Privacy Policy</a>
+                <a class="btn btn-link" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Salmiya, Kuwait</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+96541010085</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@aman.rest</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/amanrestkw/"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/amanrestkw/"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/amanrestkw/"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/amanrestkw/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                <h5 class="text-light fw-normal">Sunday - Saturday</h5>
+                <p>12PM - 11PM</p>
+                <!-- <h5 class="text-light fw-normal">Sunday</h5>
+                <p>10AM - 08PM</p> -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-6">
+                <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Quich Inquiry</h4>
+                <p>Send us your message</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <!-- <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Message"> -->
+                    <a href="https://wa.me/96541010085?text=Hi%20There!" target="_blank"> <button type="button" class="btn btn-primary py-2 position-absolute top-0 mt-2 me-2">Send Message</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="https://apexkw.solutions/" target="_blank">Apex Solutions</a>, All Right Reserved. 
+                    
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://apexkw.solutions/" target="_blank">Apex</a><br><br>
+                   
+                </div>
+                <!-- <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+<script>
+    let cart = []; 
+    // let cartCount = 0;
+
+    // Define menu items
+    let menuItems = [
+        { name: "Burger", price: 5, image: "https://via.placeholder.com/100?text=Burger" },
+        { name: "Pizza", price: 10, image: "https://via.placeholder.com/100?text=Pizza" },
+        { name: "Pasta", price: 7, image: "https://via.placeholder.com/100?text=Pasta" },
+        { name: "Sandwich", price: 4, image: "https://via.placeholder.com/100?text=Sandwich" }
+    ]; 
+
+    function loadMenu() {
+        let menuContainer = document.getElementById("menu");
+        menuContainer.innerHTML = "";
+        
+        menuItems.forEach(item => {
+            let div = document.createElement("div");
+            div.classList.add("menu-item");
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price}</p>
+                <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+            `;
+            menuContainer.appendChild(div);
+        });
+    } 
+
+           
+function addToCart(name, price) {
+    // cartCount++;
+
+    //     document.getElementById('cart-count').innerText = cartCount;
+    //     document.getElementById('cart-items').innerText = cartCount;
+let item = cart.find(i => i.name === name);
+if (item) {
+    item.quantity++;
+    
+} else {
+    cart.push({ name, price, quantity: 1 });
+}
+updateCartCount(1);
+updateCart(); 
+
+
+// Show confirmation message
+let messageEl = document.getElementById("cart-message");
+messageEl.textContent = `${name} added to cart!`;
+messageEl.style.display = "block"; 
+
+// Hide message after 2 seconds
+setTimeout(() => {
+    messageEl.style.display = "none";
+}, 2000);
+}
+
+
+    function removeFromCart(name) {
+        let item = cart.find(i => i.name === name);
+        if (item) {
+            if (item.quantity > 1) {
+                item.quantity--;
+                //cartCount--;
+                    
+                
+                
+            } else {
+                cart = cart.filter(i => i.name !== name);
+            }
+        }
+        updateCartCount(-1);
+        updateCart();
+        
+    } 
+
+    function updateCart() {
+        let cartList = document.getElementById("cart-items");
+        let totalEl = document.getElementById("total");
+        cartList.innerHTML = "";
+        let total = 0; 
+
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.classList.add("cart-item");
+            li.innerHTML = `
+                ${item.name} - ${item.quantity} x KD${item.price.toFixed(2)}
+                <button class="remove-btn" onclick="removeFromCart('${item.name}')">X</button>
+            `;
+            cartList.appendChild(li);
+            total += item.quantity * (item.price).toFixed(2);
+        }); 
+
+        totalEl.textContent = total.toFixed(2);
+    } 
+
+    function sendWhatsApp() {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        } 
+
+        let message = "🛒 Order Details:\n";
+        let total = 0; 
+
+        cart.forEach(item => {
+            message += `${item.name} - ${item.quantity} x KD${item.price} = KD${item.quantity * (item.price).toFixed(2)}\n`;
+            total += item.quantity * (item.price).toFixed(2);
+        }); 
+
+        message += `\nTotal: KD${total}`;
+        let phone = "+96566917350";  // Replace with your WhatsApp number
+        let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url);
+        clearCart();
+    } 
+
+    // Load the menu when the page loads
+    window.onload = loadMenu;
+</script> 
+<script>
+// Function to toggle the cart box visibility
+function toggleCart() {
+const cartBox = document.getElementById('cart');
+cartBox.classList.toggle('active'); // Toggle the 'active' class to show/hide the cart
+}
+
+function toggleCartPopup() {
+        let popup = document.getElementById('cart-popup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+   
+let cartCount = 0;
+const updateCartCount = change => {
+    const cartItemCountBadge = document.querySelector(".cart-count");
+    cartCount += change;
+    if (cartCount > 0){
+        cartItemCountBadge.style.visibility = "visible";
+        cartItemCountBadge.textContent = cartCount;
+    } else{
+        cartItemCountBadge.style.visibility = "hidden";
+        cartItemCountBadge.textContent = "";
+    }
+}
+
+// function updateCartCount() {
+//     document.getElementById('cart-count').innerText = cartCount;
+//     document.getElementById('cart-items').innerText = cartCount;
+//}
+   
+
+</script>
+    
+</body>
+</html>
