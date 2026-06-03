@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import firebase_admin
 from firebase_admin import credentials, db
 import os
@@ -7,6 +7,7 @@ from PIL import Image
 
 
 app = Flask(__name__)
+app.secret_key = "amanwebsite"
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 FIXED_SIZE = (1507, 1595)  # Set the fixed size (width, height)
 
@@ -31,6 +32,7 @@ def admin():
         if 'add_category' in request.form:
             category_name = request.form['category_name']
             categories_ref.push({'name': category_name})
+            flash("Category added successfully!", "success")
 
         else:
             name_en = request.form['name_en']
@@ -42,16 +44,19 @@ def admin():
             image = request.files['image']
 
             image_url = ''
+
             if image and image.filename:
                 filename = secure_filename(image.filename)
                 image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
-                 # Open the image and resize
-                image = Image.open(image)
-                image = Image.resize(FIXED_SIZE, Image.ANTIALIAS)
+                # Open + resize image properly
+                with Image.open(image) as img:
+                    img = img.convert("RGB")
+                    img = img.resize(FIXED_SIZE, Image.Resampling.LANCZOS)
+                    img.save(image_path)
 
-                image.save(image_path)
                 image_url = f'static/uploads/{filename}'
+
 
             menu_ref.push({
                 'name_en': name_en,
@@ -62,7 +67,10 @@ def admin():
                 'category': category,
                 'image': image_url
             })
+        flash("Menu item added successfully!", "success")
+
         return redirect(url_for('admin'))
+    
 
     categories = categories_ref.get() or {}
     menu_items = menu_ref.get() or {}
@@ -96,6 +104,7 @@ def edit_item(item_id):
             'category': category,
             'image': image_url
         })
+        flash("Item updated successfully!", "success")
         return redirect(url_for('admin'))
     
     categories = categories_ref.get() or {}
@@ -105,6 +114,7 @@ def edit_item(item_id):
 @app.route('/delete/<item_id>')
 def delete_item(item_id):
     menu_ref.child(item_id).delete()
+    flash("Item deleted successfully!", "danger")
     return redirect(url_for('admin'))
 
 if __name__ == '__main__':
