@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import firebase_admin
 from firebase_admin import credentials, db
 import os
@@ -19,6 +19,7 @@ firebase_admin.initialize_app(cred, {
 
 menu_ref = db.reference('menu')
 categories_ref = db.reference('categories')
+users_ref = db.reference('users')
 
 @app.route('/')
 def menu():
@@ -28,6 +29,10 @@ def menu():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
+    if not session.get('admin'):
+        return redirect(url_for('login'))
+
+    # your existing admin code here
     if request.method == 'POST':
         if 'add_category' in request.form:
             category_name = request.form['category_name']
@@ -117,7 +122,30 @@ def delete_item(item_id):
     flash("Item deleted successfully!", "danger")
     return redirect(url_for('admin'))
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+
+        users = users_ref.get() or {}
+
+        for key, user in users.items():
+            if user.get('username') == username and user.get('password') == password:
+                session['admin'] = True
+                session['username'] = username
+                return redirect(url_for('admin'))
+
+        flash("Invalid username or password", "danger")
+
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
     #app.run(debug=True)
-    app.run(host="0.0.0.0", port=80)
+    app.run()

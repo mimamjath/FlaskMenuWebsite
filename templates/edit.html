@@ -35,16 +35,20 @@
                 <label class="form-label">Category</label>
                 <select name="category" class="form-control" required>
                     {% for key, category in categories.items() %}
-                    <option value="{{ category.name }}" {% if item.category == category.name %}selected{% endif %}>{{ category.name }}</option>
+                    <option value="{{ category.name }}" {% if item.category == category[name] %}selected{% endif %}>{{ category.name }}</option>
                     {% endfor %}
                 </select>
             </div>
+
             <div class="mb-3">
+
                 <label class="form-label">Current Image</label>
                 <div>
-                    <img src="{{ item.image }}" alt="Menu Image" class="img-fluid" style="max-width: 200px;">
+                    <img src="/{{ item.image }}" alt="Menu Image" class="img-fluid" style="max-width: 200px;">
                 </div>
+
             </div>
+
             <div class="mb-3">
                 <label class="form-label">Upload New Image (Optional)</label>
                 <input type="file" name="image" class="form-control">

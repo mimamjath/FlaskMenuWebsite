@@ -98,6 +98,9 @@
                    
                     <a href="#mn" target="_blank" class="btn btn-primary py-2 px-4" i class="fa-solid fa-phone"></i>  Order Now</a>
                 </div>
+                <a href="{{ url_for('login') }}" class="btn float-end" style="color: blue;">
+    Admin Login
+</a>
             </nav>
 
             <div class="container-xxl py-5  hero-header mb-5" style="background-color: #121517;">
@@ -258,7 +261,7 @@
     <div class="container mt-5">
         <h1 class="text-center">Our Menu</h1>
         <div class="mb-3 text-center ">
-            <button class="btn btn-primary active" onclick="filterMenu('all')">All</button>
+            <!-- <button class="btn btn-primary active" onclick="filterMenu('all')">All</button> -->
             {% for key, category in categories.items() %}
             <button class="btn btn-primary" onclick="filterMenu('{{ category.name }}')">{{ category.name }}</button>
             {% endfor %}
