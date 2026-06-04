@@ -12,9 +12,20 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 FIXED_SIZE = (1507, 1595)  # Set the fixed size (width, height)
 
 # Initialize Firebase
-cred = credentials.Certificate("firebase_credentials.json")
+#cred = credentials.Certificate("firebase_credentials.json")
+#firebase_admin.initialize_app(cred, {
+    #'databaseURL': 'https://aman-f7b63-default-rtdb.firebaseio.com/'
+#})
+
+cred = credentials.Certificate({
+    "type": "service_account",
+    "project_id": os.environ.get("FIREBASE_PROJECT_ID"),
+    "private_key": os.environ.get("FIREBASE_PRIVATE_KEY").replace("\\n", "\n"),
+    "client_email": os.environ.get("FIREBASE_CLIENT_EMAIL"),
+})
+
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://aman-f7b63-default-rtdb.firebaseio.com/'
+    "databaseURL": os.environ.get("FIREBASE_DB_URL")
 })
 
 menu_ref = db.reference('menu')
