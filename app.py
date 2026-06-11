@@ -4,6 +4,7 @@ from firebase_admin import credentials, db
 import os
 from werkzeug.utils import secure_filename
 from PIL import Image
+import json
 
 
 app = Flask(__name__)
