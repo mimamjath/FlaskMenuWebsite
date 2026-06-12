@@ -61,7 +61,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark  px-4 px-lg-5 py-3 py-lg-0" style="background-color: #121517;">
-                <a href="index.html" class="navbar-brand p-0">
+                <a href="#" class="navbar-brand p-0">
                     <!-- <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1> -->
                     <img src="{{ url_for('static', filename='img/logo.png')}}" alt="Logo"> 
                     
@@ -70,7 +70,8 @@
                 <!-- <a href="index.html" class="nav-item nav-link"><span class="material-icons">
                     translate
                     </span></a> -->
-                    <a href="index-ar.html" class="nav-item nav-link"><img src="{{ url_for('static', filename='img/ar.png')}}" /></a>
+                    <!-- <a href="index-ar.html"  class="nav-item nav-link"><img src="{{ url_for('static', filename='img/ar.png')}}" /><span><a href="{{ url_for('login') }}" class="nav-item nav-link">Admin</a></span></a> -->
+                    <a href="{{ url_for('login') }}" class="nav-item nav-link">Admin</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -80,8 +81,8 @@
                         <!-- <a href="index-ar.html" class="nav-item nav-link"><span class="material-icons">
                             translate
                             </span></a> -->
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link ">About</a>
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#" class="nav-item nav-link ">About</a>
                         <!-- <a href="service.html" class="nav-item nav-link">Service</a> -->
                         <a href="#mn" target="_blank" class="nav-item nav-link">Menu</a>
                         <!-- <div class="nav-item dropdown">
@@ -92,16 +93,15 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div> -->
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="#" class="nav-item nav-link">Contact</a>
                        
                     </div>
                    
                     <a href="#mn" target="_blank" class="btn btn-primary py-2 px-4" i class="fa-solid fa-phone"></i>  Order Now</a>
                 </div>
-                <a href="{{ url_for('login') }}" class="btn float-end" style="color: blue;">
-    Admin Login
-</a>
+               
             </nav>
+                    <!-- <a href="{{ url_for('login') }}" class=" nav-item nav-link" style="color: white; size: 10px;"> Admin Login</a> -->
 
             <div class="container-xxl py-5  hero-header mb-5" style="background-color: #121517;">
                 <div class="container my-5 py-5">
@@ -135,12 +135,12 @@
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
                             <img class="img-fluid slider" src="{{ url_for('static', filename='img/rafello.jpg')}}" alt="">
                         </div>
-                        <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
-                            <img class="img-fluid slider" src="img/fris.webp" alt="">
+                        <!-- <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
+                            <img class="img-fluid slider" src="{{ url_for('static', filename='img/fris.w')}}" alt="">
                         </div> 
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden slides">
                             <img class="img-fluid slider" src="img/slide_7.webp" alt="">
-                        </div> 
+                        </div>  -->
                     </div>
                 </div>
             </div>
